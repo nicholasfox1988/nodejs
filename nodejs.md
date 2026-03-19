@@ -16,3 +16,18 @@ fs.readFile('README.md','utf-8',function(err,data){
 })
 ```
 ---
+
+**ex.mjs**
+```javascript
+const val = 'ex data';
+
+export {val};
+```
+**im.mjs**
+```javascript
+import {val} from './ex.mjs'
+
+console.log(val);
+```
+---
+
