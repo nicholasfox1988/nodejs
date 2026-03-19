@@ -17,6 +17,8 @@ fs.readFile('README.md','utf-8',function(err,data){
 ```
 ---
 
+<span style="color:yellow">im.mjs导入模块ex.mjs</span>
+
 **ex.mjs**
 ```javascript
 const val = 'ex data';
@@ -29,5 +31,8 @@ import {val} from './ex.mjs'
 
 console.log(val);
 ```
+
+package.json 中增加 {"type":"module"}这个项就可以直接运行ES6代码了，不用改成 .mjs
+
 ---
 
