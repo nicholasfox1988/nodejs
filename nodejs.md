@@ -32,7 +32,24 @@ import {val} from './ex.mjs'
 console.log(val);
 ```
 
-package.json 中增加 {"type":"module"}这个项就可以直接运行ES6代码了，不用改成 .mjs
+<span style="color:yellow">package.json 中增加 {"type":"module"}这个项就可以直接运行ES6代码了，不用改成 .mjs</span>
 
 ---
 
+<span style="color:yellow">m2.js导入m1.js的val</span>
+
+**m1.js**
+```javascript
+const val = 'm1 data';
+
+module.exports = val;
+```
+
+**m2.js**
+```javascript
+const { log } = require('node:console');
+const val = require('./m1.js');
+
+log(val);
+```
+---
