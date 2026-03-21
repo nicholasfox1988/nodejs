@@ -53,3 +53,25 @@ const val = require('./m1.js');
 log(val);
 ```
 ---
+
+开发网站的快速脚手架：
+> npm init vite@latest
+---
+
+创建自己的脚手架：
+
+创建一个工程目录，在这个目录下创建一个bin文件夹
+
+bin文件夹里面创建一个cli.js代码如下：
+```javascript
+#! /usr/bin/env node
+
+console.log('mycli');
+```
+
+> npm init
+然后在name里面输入自定义脚本运行名 xxx
+
+> npm link
+将这个自定义脚本连接全局，使之全局调用
+
