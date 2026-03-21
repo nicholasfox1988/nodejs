@@ -36,7 +36,7 @@ console.log(val);
 
 ---
 
-<span style="color:yellow">m2.js导入m1.js的val</span>
+<span style="color:yellow">ES6写法,m2.js导入m1.js的val</span>
 
 **m1.js**
 ```javascript
