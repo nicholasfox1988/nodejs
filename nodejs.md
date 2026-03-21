@@ -68,12 +68,15 @@ bin文件夹里面创建一个cli.js代码如下：
 
 console.log('mycli');
 ```
-
+初始化
 > npm init
+
 然后在name里面输入自定义脚本运行名 xxx
 
 > npm link
 
 将这个自定义脚本连接全局，使之全局调用
 调用方法就是在bash任意位置输入 xxx即可运行cli.js
+
+---
 
