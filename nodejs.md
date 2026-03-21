@@ -73,5 +73,7 @@ console.log('mycli');
 然后在name里面输入自定义脚本运行名 xxx
 
 > npm link
+
 将这个自定义脚本连接全局，使之全局调用
+调用方法就是在bash任意位置输入 xxx即可运行cli.js
 
