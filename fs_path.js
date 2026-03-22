@@ -1,6 +1,3 @@
-# fs和path 操作  __dirname 拼接出该文本文件的绝对路径
-fs_path.js
-```javascript
 const fs= require('fs');
 const path= require('path');
 
@@ -30,5 +27,3 @@ fs.readFile(filePath1,'utf-8',(err,dataStr)=>{
         console.log('写入成功!');
     })
 })
-```
-
