@@ -1,5 +1,10 @@
 # fs和path 操作  __dirname 拼接出该文本文件的绝对路径
-fs_path.js
+
+**01.txt**
+> 小红=100 小明=98 小黑=55
+
+**fs_path.js**
+
 ```javascript
 const fs= require('fs');
 const path= require('path');
