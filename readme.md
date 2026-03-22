@@ -1,4 +1,4 @@
-# fs 操作
+# fs 操作  __dirname+'/files/01.txt 拼接出该文本文件的绝对路径
 fs01.js
 ```javascript
 const fs= require('fs');
