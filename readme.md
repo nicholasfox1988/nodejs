@@ -36,4 +36,6 @@ fs.readFile(filePath1,'utf-8',(err,dataStr)=>{
     })
 })
 ```
+> path.basename()
 
+> path.extname()
