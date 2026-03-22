@@ -1,6 +1,3 @@
-# fs 操作
-fs01.js
-```javascript
 const fs= require('fs');
 
 fs.readFile(__dirname+'/files/01.txt','utf-8',(err,dataStr)=>{
@@ -26,5 +23,3 @@ fs.readFile(__dirname+'/files/01.txt','utf-8',(err,dataStr)=>{
         console.log('写入成功!');
     })
 })
-```
-
