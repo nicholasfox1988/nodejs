@@ -1,4 +1,7 @@
-# fs和path 操作  __dirname 拼接出该文本文件的绝对路径
+### fs和path 操作  __dirname 
+fs.readFile()可以创建文件，但是不能创建文件夹
+fs.writeFile()会生存文件或者重新覆盖文件
+
 
 **源文件01.txt内容**
 > 小红=100 小明=98 小黑=55
@@ -47,7 +50,7 @@ fs.readFile(filePath1,'utf-8',(err,dataStr)=>{
 
 > path.extname()
 
-# 完整的html文件拆解成三个文件.html,.css,.js
+### 完整的html文件拆解成三个文件.html,.css,.js
 
 **seperate.js**
 ```javascript
@@ -82,5 +85,24 @@ fs.readFile(path.join(__dirname,'./files/k.html'),'utf-8',(err,data)=>{
         if(err) console.log('写入失败');
         console.log('写入成功。')
     })
+})
+```
+
+### http
+```javascript
+const http= require('http');
+
+const server= http.createServer();
+
+server.on('request',(req,res)=>{
+    const url= req.url;
+    const method= req.method;
+    const str= `Your request url is ${url},and request method is ${method}`;
+    console.log(str);
+    res.end('<h1>hello world</h1>')
+})
+
+server.listen(9000,()=>{
+    console.log('sever is running at http://127.0.0.1:9000')
 })
 ```
