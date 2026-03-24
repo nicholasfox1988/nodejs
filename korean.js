@@ -12,7 +12,7 @@ fs.readFile(path.join(__dirname,'./files/k.html'),'utf-8',(err,data)=>{
     let regScript= /<script>[\s\S]*<\/script>/;
     let newjs= regScript.exec(data)[0].replace('<script>','').replace('</script>','');
 
-    let newHtml= data.replace(regStyle,'<link href="files/korean.css">').replace(regScript,'<script src="files/korean.js"></script>');
+    let newHtml= data.replace(regStyle,'<link rel="stylesheet" href="./korean.css">').replace(regScript,'<script src="./korean.js"></script>');
     
     // console.log(newHtml);
     // console.log(newCss);
