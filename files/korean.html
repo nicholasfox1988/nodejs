@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩国海/空运数据</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="./vue/vue.min.js"></script>
+    <link href="files/korean.css">
+</head>
+<body>
+
+    <div id="showing">
+        <!-- 数据显示区 -->
+        <p v-html="htmlContent">这里显示数据</p>
+        <br>
+        <!-- 输入px查询 -->
+        <input type="text" id="searchInput" placeholder="3个数字">
+        <button onclick="speakResult()">重复发音</button>
+        <p v-html="total">这里显示数据</p>
+    </div>
+
+    <div class="file-input">
+        <p>海/空运数据</p>
+        <input type="file" id="fileInput" accept=".xlsx, .xls">
+    </div>
+    <div id="tableContainer">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>px</th>
+                    <th>Delivery</th>
+                    <th>Quantity</th>
+                    <th>NAME</th>
+                    <th>Shipment NO.</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="files/korean.js"></script>
+</body>
+</html>
