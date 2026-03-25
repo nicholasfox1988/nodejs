@@ -99,7 +99,7 @@ fs.readFile(path.join(__dirname,'./files/k.html'),'utf-8',(err,data)=>{
 </details>
 <br/>
 <details>
-<summary>http</summary>
+<summary>http的操作</summary>
 
 ### http01.js
 ```javascript
@@ -218,13 +218,22 @@ console.log(username);
 + require('模块'),其实是加载了这个模块的module.exports
 </details>
 <br/>
-<details>
+<details open>
 <summary>第三方模块（包）</summary>
 <br/>
 
-+ 每个js文件里面都有一个module,代表当前模块。
+**安装时间格式化包moment**
+> npm i moment
+**指定moment包的版本
+> npm i moment@2.22.2
 
-+ module是一个对象，它里面有一个exports(即module.exports)是对外的接口
+**17.js**
+```javascript
+const moment= require('moment');
+const dt= moment().format('YYYY-MM-DD HH:mm:ss');
 
-+ require('模块'),其实是加载了这个模块的module.exports
+console.log(dt);
+```
+***结果如下  :***
+> 2026-03-26 09:40:44
 </details>
