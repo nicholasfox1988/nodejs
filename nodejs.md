@@ -1,7 +1,11 @@
-### fs和path 操作  __dirname 
-fs.readFile()可以创建文件，但是不能创建文件夹
-fs.writeFile()可以生成文件或者覆盖已经存在的文件
+<details>
+<summary>fs和path 操作</summary>
 
+path.join(__dirname,'   ') 拼凑出文件的绝对路径 
+
+fs.readFile()可以创建文件，但是不能创建文件夹
+
+fs.writeFile()可以生成文件或者覆盖已经存在的文件
 
 **源文件01.txt内容**
 > 小红=100 小明=98 小黑=55
@@ -49,6 +53,11 @@ fs.readFile(filePath1,'utf-8',(err,dataStr)=>{
 > path.basename()
 
 > path.extname()
+
+</details>
+
+
+
 
 ### 完整的html文件拆解成三个文件.html,.css,.js
 
