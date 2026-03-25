@@ -1,11 +1,11 @@
 <details>
 <summary>fs和path 操作</summary>
 
-path.join(__dirname,'   ') 拼凑出文件的绝对路径 
+> path.join(__dirname,'   ') 拼凑出文件的绝对路径 
 
-fs.readFile()可以创建文件，但是不能创建文件夹
+> fs.readFile()可以创建文件，但是不能创建文件夹
 
-fs.writeFile()可以生成文件或者覆盖已经存在的文件
+> fs.writeFile()可以生成文件或者覆盖已经存在的文件
 
 **源文件01.txt内容**
 > 小红=100 小明=98 小黑=55
@@ -100,16 +100,15 @@ fs.readFile(path.join(__dirname,'./files/k.html'),'utf-8',(err,data)=>{
 <br/>
 <details>
 <summary>http</summary>
-### http
+
+### http01.js
 ```javascript
 const http= require('http');
 
 const server= http.createServer();
 
 server.on('request',(req,res)=>{
-    const url= req.url;
-    const method= req.method;
-    const str= `Your request url is ${url},and request method is ${method}`;
+    const str= `Your request url is ${req.url},and request method is ${req.method}`;
     console.log(str);
     res.end('<h1>hello world</h1>')
 })
