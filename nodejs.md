@@ -55,9 +55,9 @@ fs.readFile(filePath1,'utf-8',(err,dataStr)=>{
 > path.extname()
 
 </details>
-
-
-
+<br/>
+<details>
+<summary>html文件分解</summary>
 
 ### 完整的html文件拆解成三个文件.html,.css,.js
 
@@ -96,7 +96,10 @@ fs.readFile(path.join(__dirname,'./files/k.html'),'utf-8',(err,data)=>{
     })
 })
 ```
-
+</details>
+<br/>
+<details>
+<summary>http</summary>
 ### http
 ```javascript
 const http= require('http');
@@ -115,3 +118,4 @@ server.listen(9000,()=>{
     console.log('sever is running at http://127.0.0.1:9000')
 })
 ```
+</details>
