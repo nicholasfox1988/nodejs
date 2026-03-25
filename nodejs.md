@@ -176,7 +176,7 @@ server.listen(9000,()=>{
 </details>
 <br/>
 <details>
-<summary>模块:内置(fs,path,http)，自定义(用户自己写的.js文件)，第三方</summary>
+<summary>模块:内置(fs,path,http)，自定义(用户自己写的.js文件)，第三方(包)</summary>
 
 **ex.js**
 ```javascript
@@ -209,6 +209,17 @@ console.log(username);
 <br/>
 <details>
 <summary>CommonJS规范</summary>
+<br/>
+
++ 每个js文件里面都有一个module,代表当前模块。
+
++ module是一个对象，它里面有一个exports(即module.exports)是对外的接口
+
++ require('模块'),其实是加载了这个模块的module.exports
+</details>
+<br/>
+<details>
+<summary>第三方模块（包）</summary>
 <br/>
 
 + 每个js文件里面都有一个module,代表当前模块。
