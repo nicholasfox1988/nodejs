@@ -242,6 +242,12 @@ console.log(dt);
 <summary>创建项目project</summary>
 <br/>
 
+```dos
+npm i packName      //核心安装
+npm i packName -g   //全局安装
+npm i packName -D   //开发安装
+```
+
 **第一件事是:初始化目录（项目文件夹名请不要使用中文）**
 
 > npm init -y
@@ -273,6 +279,7 @@ console.log(dt);
 
 **查看可使用的服务器地址**
 > nrm ls
+
 **结果如下:**
 ```dos
   npm ---------- https://registry.npmjs.org/
