@@ -174,3 +174,31 @@ server.listen(9000,()=>{
 })
 ```
 </details>
+<br/>
+<details>
+<summary>模块:内置(fs,path,http)，自定义(用户自己写的.js文件)，第三方</summary>
+
+**ex.js**
+```javascript
+module.exports.username= '张三';
+
+module.exports.sayhello= function(){
+    console.log('hello world!');
+}
+```
+
+**im.js**
+```javascript
+const m= require('./ex');
+
+console.log(m);
+```
+**im.js**
+```javascript
+const { username } = require('./ex');
+
+console.log(username);
+```
+
+> node im.js输出结果为:{ username: '张三', sayhello: [Function (anonymous)] }
+</details>
