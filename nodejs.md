@@ -201,4 +201,19 @@ console.log(username);
 ```
 
 > node im.js输出结果为:{ username: '张三', sayhello: [Function (anonymous)] }
+
+> exports 就是module.exports 它们同时指向一个空对象,所以直接用exports就可以了。永远以module.exports指向的对象为准。exports的权重不如module.exports。
+
+> 请只使用 module.exports
+</details>
+<br/>
+<details>
+<summary>CommonJS规范</summary>
+<br/>
+
++ 每个js文件里面都有一个module,代表当前模块。
+
++ module是一个对象，它里面有一个exports(即module.exports)是对外的接口
+
++ require('模块'),其实是加载了这个模块的module.exports
 </details>
