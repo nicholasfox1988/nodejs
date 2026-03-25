@@ -108,13 +108,39 @@ const http= require('http');
 const server= http.createServer();
 
 server.on('request',(req,res)=>{
-    const str= `Your request url is ${req.url},and request method is ${req.method}`;
+    const str= `你的请求地址是${req.url},请求方式是${req.method}`;
     console.log(str);
-    res.end('<h1>hello world</h1>')
+    res.setHeader('Content-Type','text/html;charset=utf-8',);
+    res.end(str);
 })
 
 server.listen(9000,()=>{
     console.log('sever is running at http://127.0.0.1:9000')
 })
 ```
+
+### http02.js
+```javascript
+const http= require('http');
+
+const server= http.createServer();
+
+server.on('request',(req,res)=>{
+    let url= req.url;
+    let content= '<h1>404 Not found!</h1>';
+    if(url=== '/' || url=== '/index.html'){
+        content= '<h1>首页</h1>';
+    }else if(url=== '/about.html'){
+        content= '<h1>关于页面</h1>';
+    }
+    // 中文解码
+    res.setHeader('Content-Type','text/html;charset=utf-8',);
+    res.end(content);
+})
+
+server.listen(9000,()=>{
+    console.log('sever is running at http://127.0.0.1:9000')
+})
+```
+
 </details>

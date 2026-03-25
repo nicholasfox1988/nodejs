@@ -3,11 +3,10 @@ const http= require('http');
 const server= http.createServer();
 
 server.on('request',(req,res)=>{
-    const url= req.url;
-    const method= req.method;
-    const str= `Your request url is ${url},and request method is ${method}`;
+    const str= `你的请求地址是${req.url},请求方式是${req.method}`;
     console.log(str);
-    res.end('<h1>hello world</h1>')
+    res.setHeader('Content-Type','text/html;charset=utf-8',);
+    res.end(str);
 })
 
 server.listen(9000,()=>{
