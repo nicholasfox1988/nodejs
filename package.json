@@ -1,5 +1,28 @@
 {
   "dependencies": {
+    "jquery": "^4.0.0",
     "moment": "^2.22.2"
+  },
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "13.js",
+  "scripts": {
+    "dev": "node http03.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholasfox1988/nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nicholasfox1988/nodejs/issues"
+  },
+  "homepage": "https://github.com/nicholasfox1988/nodejs#readme",
+  "devDependencies": {
+    "art-template": "^4.13.4"
   }
 }

@@ -218,7 +218,7 @@ console.log(username);
 + require('模块'),其实是加载了这个模块的module.exports
 </details>
 <br/>
-<details open>
+<details>
 <summary>第三方模块（包）</summary>
 <br/>
 
@@ -236,4 +236,53 @@ console.log(dt);
 ```
 ***结果如下  :***
 > 2026-03-26 09:40:44
+</details>
+<br/>
+<details open>
+<summary>创建项目project</summary>
+<br/>
+
+**第一件事是:初始化目录（项目文件夹名请不要使用中文）**
+
+> npm init -y
+
+**有配置文件package.json的话，只需输入下面的命令，将会把配置文件里面的dependencies所有的依赖包全部下载下来**
+
+> npm i
+
+**卸载包 uninstall没有缩写**
+
+> npm uninstall art-template
+
+**将包安装到开发环境，不安装到发布环境中**
+> npm install art-template -D
+
+**结果如下**
+> https://registry.npmjs.org/
+
+**查看下包服务器地址**
+> npm config get registry
+
+**设置下包服务器地址**
+
+> npm config set registry=http://registry.npm.taobao.org/
+ 
+**安装nrm,将nrm安装为全局工具**
+
+> npm i nrm -g
+
+**查看可使用的服务器地址**
+> nrm ls
+**结果如下:**
+```dos
+  npm ---------- https://registry.npmjs.org/
+  yarn --------- https://registry.yarnpkg.com/
+  tencent ------ https://mirrors.tencent.com/npm/
+  cnpm --------- https://r.cnpmjs.org/
+  taobao ------- https://registry.npmmirror.com/
+  npmMirror ---- https://skimdb.npmjs.com/registry/
+  huawei ------- https://repo.huaweicloud.com/repository/npm/
+```
+**切换npm服务器，命令如下**
+> nrm use taobao
 </details>
