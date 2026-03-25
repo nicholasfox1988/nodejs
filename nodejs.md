@@ -3,7 +3,7 @@
 
 > path.join(__dirname,'   ') 拼凑出文件的绝对路径 
 
-> fs.readFile()可以创建文件，但是不能创建文件夹
+> fs.writeFile()可以创建文件，但是不能创建文件夹
 
 > fs.writeFile()可以生成文件或者覆盖已经存在的文件
 
@@ -143,7 +143,7 @@ server.listen(9000,()=>{
 })
 ```
 
-### http03.js  在地址栏追加/files/k.html导航
+### http03.js  在地址栏追加k.html导航
 ```javascript
 const fs= require('fs');
 const path= require('path');
