@@ -1,3 +1,5 @@
+# nodejs学习记录
+
 <details>
 <summary>fs和path 操作</summary>
 
@@ -263,11 +265,12 @@ npm i packName -D   //开发安装
 **将包安装到开发环境，不安装到发布环境中**
 > npm install art-template -D
 
+**查看下包服务器地址**
+> npm config get registry
+
 **结果如下**
 > https://registry.npmjs.org/
 
-**查看下包服务器地址**
-> npm config get registry
 
 **设置下包服务器地址**
 
