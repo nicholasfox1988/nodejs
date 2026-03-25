@@ -226,7 +226,8 @@ console.log(username);
 
 **安装时间格式化包moment**
 > npm i moment
-**指定moment包的版本
+
+**指定moment包的版本**
 > npm i moment@2.22.2
 
 **17.js**
@@ -240,7 +241,7 @@ console.log(dt);
 > 2026-03-26 09:40:44
 </details>
 <br/>
-<details open>
+<details>
 <summary>创建项目project</summary>
 <br/>
 
@@ -295,4 +296,72 @@ npm i packName -D   //开发安装
 ```
 **切换npm服务器，命令如下**
 > nrm use taobao
+
+**i5ting_to可将md转html**
+> npm install i5ting_toc -g
+</details>
+<br/>
+<details open>
+<summary>自创包</summary>
+<br/>
+
+- **my-package/**
+    - index.js
+    - package.json
+    - readme.md
+
+**index.js**
+```javascript
+function dateFormat(dateStr){
+    const dt= new Date(dateStr);
+
+    const y= dt.getFullYear();
+    const m= dt.getMonth()+1;
+    const d= dt.getDate();
+
+    const hh= dt.getHours();
+    const mm= dt.getMinutes();
+    const ss= dt.getSeconds();
+
+    return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+}
+
+function padZero(n){
+    return n>9 ? n : '0'+n;
+}
+
+function htmlEscape(htmlstr){
+    return htmlstr.replace(/<|>|"|&/g,(match)=>{
+        switch(match){
+            case '<':
+                return '&lt;'
+            case '>':
+                return '&gt;'
+            case '"':
+                return '&quot;'
+            case '&':
+                return '&amp;'
+        }
+    })
+}
+
+module.exports= {
+    dateFormat,
+    htmlEscape
+}
+```
+
+**package.json**
+```javascript
+{
+    "name": "nick-tools",
+    "version": "1.0.0",
+    "main": "./index.js",
+    "description": "Nothing",
+    "keywords": ["itheima","dateFormat"],
+    "license":"ISC"
+}
+```
+
+
 </details>

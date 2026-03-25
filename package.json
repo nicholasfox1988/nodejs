@@ -6,7 +6,7 @@
   "name": "nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "13.js",
+  "main": "",
   "scripts": {
     "dev": "node http03.js"
   },

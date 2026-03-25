@@ -1,0 +1,8 @@
+{
+    "name": "nick-tools",
+    "version": "1.0.0",
+    "main": "./index.js",
+    "description": "Nothing",
+    "keywords": ["itheima","dateFormat"],
+    "license":"ISC"
+}
