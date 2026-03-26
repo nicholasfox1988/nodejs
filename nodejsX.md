@@ -56,7 +56,7 @@ app.listen(9000,()=>{
 生成:{"name": "zs","age": "21"}
 > req.params是读取动态的/user/:id/:name中的id和name
 
-生成:{"name": "zs","age": "21"}
+生成:{"id": 1001,"name": "nick"}
 
 **静态托管文件夹,可任意使用该文件夹中的文件**
 > app.use(express.static('files'))
@@ -93,6 +93,45 @@ app.listen(9000,()=>{
 <br/>
 <details open>
 <summary>express路由</summary>
+<br/>
+**将主程序中的复杂的路由模块分割出去**
+
+**router01.js是分割出去的路由**
+```js
+const express= require('express');
+const router= express.Router();
+
+router.get('/user/list',(req,res)=>{
+    res.send(`GET user list.`);   
+})
+
+router.post('/user/add',(req,res)=>{
+    res.send(`Add new user.`);
+})
+
+module.exports= router;
+```
+
+**express04.js调用router01.js中编写好的路由进行使用所以只需修改router01.js即可完成修改路由设置**
+```js
+const express= require('express');
+const app= express();
+const router= require('./router01');
+
+app.use(router);
+
+app.listen(9000,()=>{
+    console.log(`express server running at http://127.0.0.1:9000`);
+})
+```
+
+> app.use()是用来注册全局中间件（很重要）router和express.static都属于中间件
+
+> app.use('/abc',中间件); 可以给中间件添加前缀
+</details>
+<br/>
+<details open>
+<summary>中间件</summary>
 <br/>
 
 
