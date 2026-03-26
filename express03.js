@@ -1,7 +1,9 @@
 const express= require('express');
 const app= express();
 
-app.use(express.static('files'))
+app.use('/efg',express.static('./files'))
+app.use('/pre',express.static('./preview'))
+
 app.get('/',(req,res)=>{
     res.send(`<h1>hello world!</h1>`);
 })
