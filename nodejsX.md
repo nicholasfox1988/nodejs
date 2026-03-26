@@ -183,4 +183,90 @@ app.listen(9000,()=>{
     console.log(`express server running at http://127.0.0.1:9000`);
 })
 ```
+
+**中间件可以传递(req,res)给其他中间件和路由**
+
+**mid02.js**
+```js
+const express= require('express');
+const app= express();
+
+app.use((req,res,next)=>{
+    const time= Date.now();
+    req.startTime= time;
+    next();
+})
+
+app.get('/',(req,res)=>{
+    res.send('home page'+req.startTime);
+})
+
+app.get('/user',(req,res)=>{
+    res.send('user page'+req.startTime);
+})
+
+app.listen(9000,()=>{
+    console.log(`express server running at http://127.0.0.1:9000`);
+})
+```
+**在路由中可以加入局部生效的中间件**
+
+**mid03.js**
+```js
+const express= require('express');
+const app= express();
+
+const mw1= function(req,res,next){
+    console.log('第一个中间件');
+    next();
+}
+const mw2= function(req,res,next){
+    console.log('第二个中间件');
+    next();
+}
+
+app.get('/',mw1,mw2,(req,res)=>{
+    res.send('home page');
+})
+
+app.get('/user',(req,res)=>{
+    res.send('user page');
+})
+
+app.listen(9000,()=>{
+    console.log(`express server running at http://127.0.0.1:9000`);
+})
+```
+>**一定要在路由之前去定义注册中间件，放路由后面的话就失效了**
+
+> **中间件的最后一行必须是next(),next()后面不要再有代码了**
+
+> **中间件之间共享(req,res),req可以挂其他属性值和方法**
+
+**错误级别的中间件必须放最后，捕捉错误**
+
+**mid04.js**
+```js
+const express= require('express');
+const app= express();
+
+app.get('/',(req,res)=>{
+    throw new Error('服务器发生了错误');
+    res.send('home page');
+})
+
+app.use((err,req,res,next)=>{
+    console.log('发生了错误：'+err.message);
+    res.send('Error'+err.message);
+})
+
+app.listen(9000,()=>{
+    console.log(`express server running at http://127.0.0.1:9000`);
+})
+```
+
+- **express自带的中间件**
+    - express.static >>>托管文件夹,可访问文件夹中所有文件
+    - express.json   >>>
+    - express.urlencoded
 </details>
