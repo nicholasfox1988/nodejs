@@ -61,7 +61,7 @@ app.listen(9000,()=>{
 **静态托管文件夹,可任意使用该文件夹中的文件**
 > app.use(express.static('files'))
 
-**可托管多个静态目录，也可在访问中要求书写/abc任意字符串
+**可托管多个静态目录，也可在访问中要求书写/abc任意字符串**
 > app.use('/abc',express.static('files'))
 
 **express03.js**
@@ -91,9 +91,10 @@ app.listen(9000,()=>{
 
 </details>
 <br/>
-<details open>
+<details>
 <summary>express路由</summary>
 <br/>
+
 **将主程序中的复杂的路由模块分割出去**
 
 **router01.js是分割出去的路由**
@@ -134,5 +135,52 @@ app.listen(9000,()=>{
 <summary>中间件</summary>
 <br/>
 
+**next()是实现多个中间件连续调用的关键，传递数据**
 
+**mid01.js中间件使用app.use使用中间件**
+```js
+const express= require('express');
+const app= express();
+
+const mw= function(req,res,next){
+    console.log('转交流转');
+    next();
+}
+
+app.use(mw)
+
+app.get('/',(req,res)=>{
+    res.send('home page');
+})
+
+app.get('/user',(req,res)=>{
+    res.send('user page');
+})
+
+app.listen(9000,()=>{
+    console.log(`express server running at http://127.0.0.1:9000`);
+})
+```
+**mid01.js的简化版本**
+```js
+const express= require('express');
+const app= express();
+
+app.use((req,res,next)=>{
+    console.log('转交流转');
+    next();
+})
+
+app.get('/',(req,res)=>{
+    res.send('home page');
+})
+
+app.get('/user',(req,res)=>{
+    res.send('user page');
+})
+
+app.listen(9000,()=>{
+    console.log(`express server running at http://127.0.0.1:9000`);
+})
+```
 </details>
