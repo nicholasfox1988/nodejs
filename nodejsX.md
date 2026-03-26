@@ -269,4 +269,10 @@ app.listen(9000,()=>{
     - express.static >>>托管文件夹,可访问文件夹中所有文件
     - express.json   >>>
     - express.urlencoded
+
+> app.use(express.json())
+
+> app.use(express.urlencoded({extended:false}))
+
+**然后通过req.body进行访问**
 </details>
