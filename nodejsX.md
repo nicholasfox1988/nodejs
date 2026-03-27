@@ -270,6 +270,8 @@ app.listen(9000,()=>{
     - express.json   >>>
     - express.urlencoded
 
+> app.use(express.static('./files'))
+
 > app.use(express.json())
 
 > app.use(express.urlencoded({extended:false}))
