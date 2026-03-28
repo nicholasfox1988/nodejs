@@ -1,64 +1,66 @@
-# fs和path 操作
+# 比较完整的服务器
 
-> path.join(__dirname,'   ') 拼凑出文件的绝对路径 
+project目录
+- public/
+  - css/
+  - img/
+- views/
+  - 404.hbs
+  - 500.hbs
+  - homepage.hbs
+- index.js
+- router.js
 
-> fs.writeFile()可以创建文件，但是不能创建文件夹
+> npm init -y
 
-> fs.writeFile()可以生成文件或者覆盖已经存在的文件
+> npm i express hbs
 
-**源文件01.txt内容**
-> 小红=100 小明=98 小黑=55
+**index.js服务器入口程序**
+```js
+const express = require('express');
+const path = require('path');
+const app = express();
+const router = require('./router.js');
 
-**目标文件01-1.txt内容**
-```
-小红:100
-小明:98
-小黑:55
-```
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.use(express.static('public'));
 
-**fs_path.js**
+app.use(router);
 
-```javascript
-const fs= require('fs');
-const path= require('path');
+app.use((err, req, res, next) => {
+  console.log(err.message);
+  // res.status(500).render('500.hbs');
+  res.status(500).render('500.hbs', { message: err.message });
+})
+app.use((req, res) => {
+  res.status(404).render('404.hbs');
+})
 
-filePath1= path.join(__dirname,'./files/01.txt');
-filePath2= path.join(__dirname,'./files/01-1.txt');
-
-fs.readFile(filePath1,'utf-8',(err,dataStr)=>{
-    if(err){
-        return console.log('读取失败！！！',err.message);
-    }
-    console.log('读取成功！',dataStr);
-
-    let arr1= dataStr.split(' ');
-    // console.log(arr1);
-    let arr2= [];
-    arr1.forEach(item=>{
-        arr2.push(item.replace('=',':'));
-    })
-    // console.log(arr2);
-    let newStr= arr2.join('\r\n');
-    console.log(newStr);
-    
-    fs.writeFile(filePath2,newStr,(err)=>{
-        if(err){
-            return console.log('写入失败！！！',err.message);
-        }
-        console.log('写入成功!');
-    })
+app.listen(9000, () => {
+  console.log(`Sever is running at http://localhost:9000`);
 })
 ```
-> path.basename()
 
-> path.extname()
+**router.js路由模块**
+```js
+const express = require('express');
 
-# 第二章
+router = express.Router();
 
-- abc
-- efg
+router.get(['/', '/index'], (req, res) => {
+  res.render('homepage.hbs');
+})
 
-# 第三章
+router.get('/data', (req, res, next) => {
+  try {
+    // 模拟一种错误情况
+    throw new Error('数据库连接失败！！！');
+  } catch (err) {
+    // 关键点：将错误传递给下方的错误中间件
+    next(err);
+  }
+});
 
-$$x_{1}^2$$
-
+module.exports = router;
+```
