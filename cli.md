@@ -1,0 +1,169 @@
+
+```js
+#! /usr/bin/env node
+
+// create-project.js
+const fs = require('fs');
+const path = require('path');
+const args = process.argv.slice(2);
+
+// 定义目录结构
+const directories = [
+  'public/css',
+  'public/img',
+  'views',
+  'template'
+];
+
+// 定义需要创建的文件
+const files = [
+  { path: 'views/404.hbs', content: '<h1>404 - Page Not Found</h1>' },
+  { path: 'views/500.hbs', content: '<h1>500 - Internal Server Error</h1>' },
+  { path: 'views/homepage.hbs', content: '<h1>这是首页</h1>' },
+  { path: 'index.js', content: getIndexJsContent() },
+  { path: 'router.js', content: getRouterJsContent() }
+];
+
+// 创建目录
+function createDirectories() {
+  directories.forEach(dir => {
+    const fullPath = path.join(process.cwd(), dir);
+    if (!fs.existsSync(fullPath)) {
+      fs.mkdirSync(fullPath, { recursive: true });
+      console.log(`✅ 创建目录: ${dir}`);
+    } else {
+      console.log(`⚠️  目录已存在: ${dir}`);
+    }
+  });
+}
+
+// 创建文件
+function createFiles() {
+  files.forEach(file => {
+    const fullPath = path.join(process.cwd(), file.path);
+    const dir = path.dirname(fullPath);
+
+    // 确保文件所在的目录存在
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    if (!fs.existsSync(fullPath)) {
+      fs.writeFileSync(fullPath, file.content, 'utf8');
+      console.log(`✅ 创建文件: ${file.path}`);
+    } else {
+      console.log(`⚠️  文件已存在: ${file.path}`);
+    }
+  });
+}
+
+// index.js 的内容模板
+function getIndexJsContent() {
+  return `const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 9000;
+const router = require('./router.js');
+
+// 设置模板引擎
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
+// 静态文件中间件
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 导入路由
+app.use(router);
+
+// 404 处理
+app.use((req, res) => {
+  res.status(404).render('404');
+});
+
+// 错误处理
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).render('500');
+});
+
+app.listen(PORT, () => {
+  console.log(\`服务器运行在 http://localhost:\${PORT}\`);
+});
+`;
+}
+
+function getRouterJsContent() {
+  return `const express = require('express');
+
+router = express.Router();
+
+router.get(['/', '/index'], (req, res) => {
+  res.render('homepage.hbs');
+})
+
+
+router.get('/data', (req, res, next) => {
+  try {
+    // 模拟一种错误情况
+    throw new Error('数据库连接失败！！！');
+  } catch (err) {
+    // 关键点：将错误传递给下方的错误中间件
+    next(err);
+  }
+});
+
+module.exports = router; 
+`
+}
+
+// 创建 package.json
+function createPackageJson() {
+  const packageJsonPath = path.join(process.cwd(), 'package.json');
+
+  if (!fs.existsSync(packageJsonPath)) {
+    const packageJson = {
+      name: args[0],
+      version: '1.0.0',
+      description: '',
+      main: 'index.js',
+      scripts: {
+        start: 'node index.js',
+        dev: 'nodemon index.js'
+      },
+      dependencies: {
+        express: '^4.18.2',
+        hbs: '^4.2.0'
+      },
+      devDependencies: {
+        nodemon: '^3.0.1'
+      }
+    };
+
+    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+    console.log(`✅ 创建文件: package.json`);
+  } else {
+    console.log(`⚠️  package.json 已存在`);
+  }
+}
+
+// 主函数
+function main() {
+  console.log('🚀 开始创建项目结构...\n');
+
+  try {
+    createDirectories();
+    createFiles();
+    createPackageJson();
+
+    console.log('\n✨ 项目结构创建完成！');
+    console.log('\n接下来请执行以下命令：');
+    console.log('1. npm install     # 安装依赖');
+    console.log('2. npm start       # 启动服务器');
+  } catch (error) {
+    console.error('❌ 创建失败:', error.message);
+  }
+}
+
+// 执行
+main();
+```
