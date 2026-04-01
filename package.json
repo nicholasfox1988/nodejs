@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^4.17.1",
     "jquery": "^4.0.0",
     "moment": "^2.22.2"
@@ -9,6 +10,7 @@
   "description": "",
   "main": "",
   "scripts": {
+    "start": "node express04.js",
     "dev": "node http03.js"
   },
   "repository": {

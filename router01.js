@@ -1,12 +1,14 @@
-const express= require('express');
-const router= express.Router();
+const express = require('express');
+const router = express.Router();
 
-router.get('/user/list',(req,res)=>{
-    res.send(`GET user list.`);   
+router.get('/user/list', (req, res) => {
+    console.log('get');
+    res.send(req.query);
 })
 
-router.post('/user/add',(req,res)=>{
-    res.send(`Add new user.`);
+router.post('/user/add', (req, res) => {
+    console.log('post');
+    res.send(req.body);
 })
 
-module.exports= router;
+module.exports = router;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <button id="butGet">get</button>
+  <button id="butPost">post</button>
+  <script>
+    $(function () {
+      $('#butGet').on('click', () => {
+        $.ajax({
+          type: 'GET',
+          url: 'http://127.0.0.1:9000/user/list/',
+          data: { name: 'nick', age: 20 },
+          success: function (res) {
+            console.log(res);
+          }
+        })
+      })
+      $('#butPost').on('click', () => {
+        $.ajax({
+          type: 'POST',
+          url: 'http://127.0.0.1:9000/user/add/',
+          data: { bookname: 'abc', auther: 'me' },
+          success: function (res) {
+            console.log(res);
+          }
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>
